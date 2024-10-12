@@ -28,7 +28,21 @@
       vkBridge.send('VKWebAppInit')
         .then((data) => { 
           if (data.result) {
-            gameInited = true;            
+            gameInited = true;
+
+            vkBridge.send('VKWebAppShowBannerAd', {
+            banner_location: 'bottom',
+            height_type: 'compact',
+            can_close: false
+            })
+           .then((data) => { 
+              if (data.result) {
+              }
+            })
+            .catch((error) => {
+              console.log(error);
+            });
+            
             console.log("GAME RESULT WAS INITED");
           } else {
              console.log("GAME RESULT INIT ERROR");
@@ -83,11 +97,11 @@
       }
 
       var buildUrl = "Build";
-      var loaderUrl = buildUrl + "/IdleMilitaryBaseVKBuild.loader.js";
+      var loaderUrl = buildUrl + "/IdleMilitaryBaseVKWB.loader.js";
       var config = {
-        dataUrl: buildUrl + "/9047ffeb4837cbe24085cc8c93bce3bd.data.unityweb",
-        frameworkUrl: buildUrl + "/4b9341850a15f207be2675f8f17c1b2c.js.unityweb",
-        codeUrl: buildUrl + "/534b443c850f15d1031ea9c546ee3b34.wasm.unityweb",
+        dataUrl: buildUrl + "/45ee635f0485676ecf0a14b6995ca55b.data.unityweb",
+        frameworkUrl: buildUrl + "/ce2437caa6ac732e832cd990cb180d44.js.unityweb",
+        codeUrl: buildUrl + "/a7a879c9952a207a72684a78a29ac651.wasm.unityweb",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "Avlerm",
         productName: "Idle Military Base: Army Tycoon",
@@ -115,7 +129,6 @@
         // To lower canvas resolution on mobile devices to gain some
         // performance, uncomment the following line:
         // config.devicePixelRatio = 1;
-
         canvas.style.width = "100%";
         canvas.style.height = "100%";
       } else {
@@ -140,9 +153,7 @@
                 alert(message);
               });
             };
-
       document.body.appendChild(script);
-
     </script>
   </body>
 </html>
