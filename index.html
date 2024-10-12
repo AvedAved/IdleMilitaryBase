@@ -31,9 +31,7 @@
             gameInited = true;
 
             vkBridge.send('VKWebAppShowBannerAd', {
-            banner_location: 'bottom',
-            height_type: 'compact',
-            can_close: false
+            height_type: 'compact'
             })
            .then((data) => { 
               if (data.result) {
